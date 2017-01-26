@@ -3,20 +3,15 @@
 namespace App;
 
 class Checkout {
-    private $productTypes = [];
+    private $pricingRules = [];
     private $itemsCounts  = [];
     private $itemsPrices  = [];
 
-    public function __construct($itemsStr)
+    public function __construct($itemsStr, $pricingRules)
     {
-        $this->productTypes = [
-            'A' => new ProductPrice(50, new ProductDiscount(3, 20)),
-            'B' => new ProductPrice(30, new ProductDiscount(2, 15)),
-            'C' => new ProductPrice(20),
-            'D' => new ProductPrice(15),
-        ];
+        $this->pricingRules = $pricingRules;
 
-        foreach ($this->productTypes as $type => $productPrice) {
+        foreach ($this->pricingRules as $type => $productPrice) {
             $this->itemsCounts[$type]  = substr_count($itemsStr, $type);
             $this->itemsPrices[$type]  = $productPrice->priceFor($this->itemsCounts[$type]);
         }
