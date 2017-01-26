@@ -20,7 +20,7 @@ class ProductPrice {
     public function discountFor($count)
     {
         if ($this->discount) {
-            return $this->discount->getDiscount() * intval($count / $this->discount->getProductsCount());
+            return $this->discount->discountFor($count);
         }
     }
 }

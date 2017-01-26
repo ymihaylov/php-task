@@ -12,13 +12,8 @@ class ProductDiscount {
         $this->discount      = $discount;
     }
 
-    public function getProductsCount()
+    public function discountFor($count)
     {
-        return $this->productsCount;
-    }
-
-    public function getDiscount()
-    {
-        return $this->discount;
+        return $this->discount * intval($count / $this->productsCount);
     }
 }
