@@ -28,4 +28,17 @@ final class CheckotTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals((new Checkout('AAABBD', $pricingRules))->total(), 190);
         $this->assertEquals((new Checkout('DABABA', $pricingRules))->total(), 190);
     }
+
+    public function testTotalPriceOfGivenItemsWithMultipleDiscounts()
+    {
+        $pricingRules = [
+            'A' => new ProductPrice(50, [new ProductDiscount(3, 20), new ProductDiscount(10, 100)]),
+            'B' => new ProductPrice(30, [new ProductDiscount(2, 15), new ProductDiscount(5, 50)]),
+        ];
+
+        $this->assertEquals((new Checkout('AAA', $pricingRules))->total(), 130);
+        $this->assertEquals((new Checkout('AAAAAAAAAAA', $pricingRules))->total(), 450);
+        $this->assertEquals((new Checkout('BB', $pricingRules))->total(), 45);
+        $this->assertEquals((new Checkout('BBBBBA', $pricingRules))->total(), 150);
+    }
 }

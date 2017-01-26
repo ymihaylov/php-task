@@ -16,4 +16,9 @@ class ProductDiscount {
     {
         return $this->discount * intval($count / $this->productsCount);
     }
+
+    public function getProductsCount()
+    {
+        return $this->productsCount;
+    }
 }
