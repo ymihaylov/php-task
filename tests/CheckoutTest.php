@@ -3,8 +3,9 @@
 use App\Checkout;
 use App\ProductPrice;
 use App\ProductDiscount;
+use PHPUnit\Framework\TestCase;
 
-final class CheckotTest extends PHPUnit_Framework_TestCase {
+final class CheckotTest extends TestCase {
     public function testTotalPriceOfGivenItems()
     {
         $pricingRules = [

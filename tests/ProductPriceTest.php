@@ -3,8 +3,9 @@
 use App\Checkout;
 use App\ProductPrice;
 use App\ProductDiscount;
+use PHPUnit\Framework\TestCase;
 
-final class ProductPriceTest extends PHPUnit_Framework_TestCase {
+final class ProductPriceTest extends TestCase {
     public function testPriceFor()
     {
         $this->assertEquals((new ProductPrice(15))->priceFor(1), 15);
